@@ -6,14 +6,20 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour
 {
 
-    private static List<BasicEnemy> _enemies;
+    private static List<BasicEnemy> _enemies = new List<BasicEnemy>();
     public static List<BasicEnemy> Enemies { get { return _enemies; } }
 
     private static List<Vector3> _path = null;
     private List<Vector3> _checkpoints = null;
 
     [SerializeField] float _speed = 1f;
+    [SerializeField] float _damage = 1f;
     [SerializeField] float _health = 1f;
+
+    public float Damage
+    {
+        get { return _damage; }
+    }
 
     /// <summary>
     /// Deals damage against the enemy and destroys him.
