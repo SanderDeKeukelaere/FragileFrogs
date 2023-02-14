@@ -29,7 +29,7 @@ public class BasicEnemy : MonoBehaviour
     public bool DoDamage(float damage)
     {
         _health -= damage;
-        if (_health >= 0f)
+        if (_health <= 0f)
         {
             Destroy(gameObject);
             return true;
