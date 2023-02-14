@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
+
+    private static List<BasicEnemy> _enemies;
+    public static List<BasicEnemy> Enemies { get { return _enemies; } }
+
     private static List<Vector3> _path = null;
     private List<Vector3> _checkpoints = null;
 
@@ -31,6 +35,10 @@ public class BasicEnemy : MonoBehaviour
     {
         GetPath();
     }
+    private void Start()
+    {
+        _enemies.Add(this);
+    }
     private void Update()
     {
         if (_checkpoints == null)
@@ -38,6 +46,10 @@ public class BasicEnemy : MonoBehaviour
             GetPath();
         }
         UpdatePath();
+    }
+    private void OnDestroy()
+    {
+        _enemies.Remove(this);
     }
     private void GetPath()
     {
