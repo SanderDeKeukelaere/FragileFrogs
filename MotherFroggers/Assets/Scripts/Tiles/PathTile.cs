@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PathTile : BaseTile
 {
-    private GameObject _egg = null;
-    public GameObject Egg
-    {
-        get { return _egg; }
-        set { _egg = value; }
-    }
+    [SerializeField] bool _isStart = false;
+    [SerializeField] bool _isEnd = false;
+
+    public bool IsStart { get { return _isStart; } }
+    public bool IsEnd { get { return _isEnd; } }
 }
