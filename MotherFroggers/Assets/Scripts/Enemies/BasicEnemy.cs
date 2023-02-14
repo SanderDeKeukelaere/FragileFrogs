@@ -15,6 +15,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] float _speed = 1f;
     [SerializeField] float _damage = 1f;
     [SerializeField] float _health = 1f;
+    [SerializeField] float _rotateSpeed = 6f;
 
     public float Damage
     {
@@ -95,6 +96,7 @@ public class BasicEnemy : MonoBehaviour
                 return;
             }
             Vector3 p = Vector3.MoveTowards(transform.position, _checkpoints[0], _speed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_checkpoints[0] - transform.position), Time.deltaTime * _rotateSpeed);
             GetComponent<Rigidbody>().MovePosition(p);
         }
         else
