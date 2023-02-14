@@ -4474,7 +4474,7 @@ MonoBehaviour:
       _spawnAmount: 5
     - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
       _spawnAmount: 10
-    _duration: 15
+    _duration: 14.166667
 --- !u!114 &663284626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162000128778575158, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c744691c58cdc2344b5bf440b139336d, type: 2}
     - target: {fileID: 5379323945952926660, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
       propertyPath: m_Name
       value: SnakeEnemy
