@@ -125,7 +125,7 @@ public class TileManager : MonoBehaviour
                 Vector2 position = Vector2.zero;
                 position.x = node.X;
                 position.y = node.Y;
-                _path.Add(new Vector3(node.X, 0, node.Y));
+                _path.Add(new Vector3(node.X + minX, 0, node.Y + minZ));
                 if (_debugObject)
                 {
                     Instantiate(_debugObject, new Vector3(node.X + minX, 0, node.Y + minZ), Quaternion.identity).name = $"path{id}";
