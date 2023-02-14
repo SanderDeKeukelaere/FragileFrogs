@@ -29,36 +29,36 @@ public class TileManager : MonoBehaviour
         int minX = int.MaxValue, minZ = int.MaxValue;
         int maxX = int.MinValue, maxZ = int.MinValue;
 
-        for (int i = 0; i < objTiles.Length; i++)
+        foreach(BaseTile tile in objTiles)
         {
-            if ((int)objTiles[i].transform.position.x > maxX)
+            if ((int)tile.transform.position.x > maxX)
             {
-                maxX = (int)objTiles[i].transform.position.x;
+                maxX = (int)tile.transform.position.x;
             }
-            if ((int)objTiles[i].transform.position.z > maxZ)
+            if ((int)tile.transform.position.z > maxZ)
             {
-                maxZ = (int)objTiles[i].transform.position.z;
+                maxZ = (int)tile.transform.position.z;
             }
-            if ((int)objTiles[i].transform.position.x < minX)
+            if ((int)tile.transform.position.x < minX)
             {
-                minX = (int)objTiles[i].transform.position.x;
+                minX = (int)tile.transform.position.x;
             }
-            if ((int)objTiles[i].transform.position.z < minZ)
+            if ((int)tile.transform.position.z < minZ)
             {
-                minZ = (int)objTiles[i].transform.position.z;
+                minZ = (int)tile.transform.position.z;
             }
 
-            if (objTiles[i].GetComponent<PathTile>())
+            if (tile.GetComponent<PathTile>())
             {
-                if (objTiles[i].GetComponent<PathTile>().IsStart)
+                if (tile.GetComponent<PathTile>().IsStart)
                 {
-                    _startTileX = (int)objTiles[i].transform.position.x;
-                    _startTileZ = (int)objTiles[i].transform.position.z;
+                    _startTileX = (int)tile.transform.position.x;
+                    _startTileZ = (int)tile.transform.position.z;
                 }
-                else if (objTiles[i].GetComponent<PathTile>().IsEnd)
+                else if (tile.GetComponent<PathTile>().IsEnd)
                 {
-                    _endTileX = (int)objTiles[i].transform.position.x;
-                    _endTileZ = (int)objTiles[i].transform.position.z;
+                    _endTileX = (int)tile.transform.position.x;
+                    _endTileZ = (int)tile.transform.position.z;
                 }
             }
         }
@@ -74,7 +74,7 @@ public class TileManager : MonoBehaviour
                 bool found = false;
                 foreach (BaseTile tile in objTiles)
                 {
-                    if ((int)tile.transform.position.x == x && (int)tile.transform.position.z == z)
+                    if ((int)tile.transform.position.x == x + minX && (int)tile.transform.position.z == z + minZ)
                     {
                         if (tile.gameObject.GetComponent<PathTile>())
                         {
@@ -91,28 +91,28 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        _startTileZ -= minZ;
-        _endTileX -= minZ;
         _startTileX -= minX;
+        _startTileZ -= minZ;
         _endTileX -= minX;
+        _endTileZ -= minZ;
 
-        //string map = "";
-        //for (int x = 0; x < _width; x++)
-        //{
-        //    for (int z = 0; z < _height; z++)
-        //    {
-        //        if (_tileData[x,z])
-        //        {
-        //            map += "1";
-        //        }
-        //        else
-        //        {
-        //            map += "0";
-        //        }
-        //    }
-        //    map += "\n";
-        //}
-        //Debug.Log(map);
+        string map = "";
+        for (int x = 0; x < _width; x++)
+        {
+            for (int z = 0; z < _height; z++)
+            {
+                if (_tileData[x, z])
+                {
+                    map += "1";
+                }
+                else
+                {
+                    map += "0";
+                }
+            }
+            map += "\n";
+        }
+        Debug.Log(map);
 
         List<Node> pathNodes = AStar.FindPath(_startTileX, _startTileZ, _endTileX, _endTileZ, _tileData);
         _path = new List<Vector3>();
@@ -128,7 +128,7 @@ public class TileManager : MonoBehaviour
                 _path.Add(new Vector3(node.X, 0, node.Y));
                 if (_debugObject)
                 {
-                    Instantiate(_debugObject, new Vector3(node.X, 0, node.Y), Quaternion.identity).name = $"path{id}";
+                    Instantiate(_debugObject, new Vector3(node.X + minX, 0, node.Y + minZ), Quaternion.identity).name = $"path{id}";
                 }
             }
         }
