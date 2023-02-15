@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicEnemy : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class BasicEnemy : MonoBehaviour
 
     [SerializeField] float _speed = 1f;
     [SerializeField] float _damage = 1f;
-    [SerializeField] float _health = 1f;
+    [SerializeField] float _maxHealth = 1f;
+    float _health = 1f;
     [SerializeField] float _rotateSpeed = 6f;
+    [SerializeField] Slider _healthSlider = null;
+    private float _healthBarTimer = 0f;
+    private float _healthBarMaxTime = 2f;
 
     public float Damage
     {
@@ -30,6 +35,14 @@ public class BasicEnemy : MonoBehaviour
     public bool DoDamage(float damage)
     {
         _health -= damage;
+
+        if(_healthSlider != null)
+        {
+            _healthSlider.gameObject.SetActive(true);
+            _healthSlider.value = _health / _maxHealth;
+            _healthBarTimer = _healthBarMaxTime;
+        }
+
         if (_health <= 0f)
         {
             Destroy(gameObject);
@@ -44,6 +57,13 @@ public class BasicEnemy : MonoBehaviour
     }
     private void Start()
     {
+        //Set the health slider to max and invisible at the start of the game
+        _healthSlider.value = 1;
+        _healthSlider.gameObject.SetActive(false);
+
+        //Set health to max health
+        _health = _maxHealth;
+
         _enemies.Add(this);
     }
     private void Update()
@@ -53,6 +73,18 @@ public class BasicEnemy : MonoBehaviour
             GetPath();
         }
         UpdatePath();
+
+        //Update the timer for the health slider and hide when timer runs out
+        if(_healthBarTimer > 0f)
+        {
+            _healthBarTimer -= Time.deltaTime;
+
+            if (_healthSlider != null)
+                _healthSlider.gameObject.transform.rotation = Camera.main.transform.rotation;
+
+            if (_healthBarTimer <= 0f && _healthSlider != null)
+                _healthSlider.gameObject.SetActive(false);
+        }
     }
     private void OnDestroy()
     {
