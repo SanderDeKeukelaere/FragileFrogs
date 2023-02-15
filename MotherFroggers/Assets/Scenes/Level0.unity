@@ -6104,6 +6104,8 @@ MonoBehaviour:
   _startButton: {fileID: 564705814}
   _buildMusic: {fileID: 8300000, guid: c948e841b5a839d44b5337e8cd782a67, type: 3}
   _waveMusic: {fileID: 8300000, guid: 80ba3262c3644f94dbb48f2b4fac72e7, type: 3}
+  _eggsToPlace: 1
+  _eggsPerWave: 3
 --- !u!82 &663284628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10791,7 +10793,6 @@ GameObject:
   - component: {fileID: 1159001730}
   - component: {fileID: 1159001733}
   - component: {fileID: 1159001732}
-  - component: {fileID: 1159001731}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -10821,20 +10822,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -381}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1159001731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159001729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1029127df6ce9ff4491f7a99dbceb6a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ui: {fileID: 0}
-  _text: {fileID: 0}
 --- !u!114 &1159001732
 MonoBehaviour:
   m_ObjectHideFlags: 0
