@@ -15798,6 +15798,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67afd43b8bcae264ba44ef80e893d5be, type: 2}
+    - target: {fileID: 6508449955618098706, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508449955618098706, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6847116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508449955618098706, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7288142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508449955618098706, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -86.426
+      objectReference: {fileID: 0}
     - target: {fileID: 7056691235895363592, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
       propertyPath: m_Name
       value: Motherfrogger
