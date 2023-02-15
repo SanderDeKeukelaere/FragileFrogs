@@ -589,7 +589,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.492
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7428675375878089012, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
 --- !u!1001 &283916662
 PrefabInstance:
@@ -1327,33 +1328,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9394443
+      value: 0.9831246
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.069776244
+      value: -0.11122341
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16595854
+      value: -0.14156356
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2916049
+      value: 0.03248437
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.966
+      value: -12.093
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -20.654
+      value: -16.981
       objectReference: {fileID: 0}
     - target: {fileID: 6648633712843317421, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 34.847
+      value: 5.597
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7022925122368366993, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
 --- !u!1001 &748901878
 PrefabInstance:
@@ -1459,7 +1461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -146, y: 137}
+  m_AnchoredPosition: {x: -700.59485, y: 421.5614}
   m_SizeDelta: {x: 353.1774, y: 49.9609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758724823
@@ -1484,8 +1486,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: FRAGILE FROGS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8da60437e0ad9c34a9db2fafd452b5dc, type: 2}
+  m_sharedMaterial: {fileID: -7791200667345410951, guid: 8da60437e0ad9c34a9db2fafd452b5dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1509,13 +1511,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.6
-  m_fontSizeBase: 38.6
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1545,7 +1547,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -880.02527, w: -214.8418}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1781,7 +1783,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Egg
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4450839781172913557, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
 --- !u!1001 &956502907
 PrefabInstance:
@@ -2143,12 +2146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2471,7 +2474,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnakeEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8397682941576392178, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
 --- !u!1001 &1743316989
 PrefabInstance:
@@ -2659,8 +2663,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8da60437e0ad9c34a9db2fafd452b5dc, type: 2}
+  m_sharedMaterial: {fileID: -7791200667345410951, guid: 8da60437e0ad9c34a9db2fafd452b5dc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2684,8 +2688,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3020,8 +3024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -146, y: 71}
-  m_SizeDelta: {x: 205.6238, y: 43.2456}
+  m_AnchoredPosition: {x: -256.95172, y: 144.53531}
+  m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047045817
 MonoBehaviour:
