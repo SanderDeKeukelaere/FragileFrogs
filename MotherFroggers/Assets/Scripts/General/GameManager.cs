@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _waveMusic = null;
 
     bool _isInWave = true;
+    public bool IsInWave { get { return _isInWave; } }
+
 
     private Motherfrogger _motherfrogger;
 

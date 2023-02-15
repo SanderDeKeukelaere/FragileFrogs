@@ -9,12 +9,24 @@ public class UIEndGame : MonoBehaviour
     [SerializeField] TextMeshProUGUI _title;
 
     Motherfrogger _motherfrogger;
+    WaveManager _waveManager;
+    GameManager _gameManager;
     private void Awake()
     {
         _motherfrogger = FindAnyObjectByType<Motherfrogger>();
         if (_motherfrogger == null)
         {
             Debug.LogError("Motherfrogger not found");
+        }
+        _waveManager = FindAnyObjectByType<WaveManager>();
+        if (_waveManager == null)
+        {
+            Debug.LogError("WaveManager not found");
+        }
+        _gameManager = FindAnyObjectByType<GameManager>();
+        if (_gameManager == null)
+        {
+            Debug.LogError("Gamemanager not found");
         }
         _ui.SetActive(false);
     }
@@ -24,6 +36,11 @@ public class UIEndGame : MonoBehaviour
         {
             _ui.SetActive(true);
             _title.text = "GAME OVER";
+        }
+        else if (_waveManager.MaxWave == _waveManager.CurrentWave && _gameManager.IsInWave == false)
+        {
+            _ui.SetActive(true);
+            _title.text = "GAME COMPLETED";
         }
     }
 }

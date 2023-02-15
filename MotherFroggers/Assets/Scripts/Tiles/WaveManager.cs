@@ -9,6 +9,9 @@ public class WaveManager : MonoBehaviour
 
     int _currentWave = 0;
 
+    public int CurrentWave { get { return _currentWave; } }
+    public int MaxWave { get { return _waves.Count; } }
+
     Spawner _spawner;
 
     private void Start()
