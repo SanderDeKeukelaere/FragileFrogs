@@ -14,6 +14,12 @@ public class BaseTower : MonoBehaviour
     [SerializeField] private Transform _projectileSocket = null;
     [SerializeField] private Transform _frog = null;
 
+    [SerializeField] protected List<MyEnums.TileType> _placeableOn = new List<MyEnums.TileType>();
+    public List<MyEnums.TileType> PlaceableOn
+    {
+        get { return _placeableOn; }
+    }
+
     private const string ENEMY_TAG = "Enemy";
 
     // Start is called before the first frame update

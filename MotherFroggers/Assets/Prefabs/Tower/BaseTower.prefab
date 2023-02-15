@@ -149,6 +149,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 564800113741696861, guid: ca9bdcf39822387459ae8e7cb1b7758e, type: 3}
   _projectileSocket: {fileID: 597687068874304392}
   _frog: {fileID: 4989049514584965099}
+  _placeableOn: 02000000
 --- !u!136 &1090539280704098952
 CapsuleCollider:
   m_ObjectHideFlags: 0
