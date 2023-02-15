@@ -4474,7 +4474,7 @@ MonoBehaviour:
       _spawnAmount: 5
     - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
       _spawnAmount: 10
-    _duration: 14.166667
+    _duration: 17.566668
 --- !u!114 &663284626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10164,7 +10164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2ade9d2d7ee6608408697325ca5d74ee, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 80ba3262c3644f94dbb48f2b4fac72e7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -12391,16 +12391,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.73483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.73483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.2443204
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.29161492
       objectReference: {fileID: 0}
     - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 3.4813902
       objectReference: {fileID: 0}
     - target: {fileID: 7664493693333641577, guid: bb49dee0ddf1b12439446a729ffd6807, type: 3}
       propertyPath: m_LocalRotation.w
