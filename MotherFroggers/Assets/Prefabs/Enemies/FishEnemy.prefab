@@ -345,7 +345,6 @@ MonoBehaviour:
   _speed: 0.025
   _damage: 1
   _maxHealth: 1
-  _health: 1
   _rotateSpeed: 6
   _healthSlider: {fileID: 2283152517932276038}
 --- !u!1 &5789972532030172417
@@ -643,7 +642,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6cae56de6db4e284689adf5c07e8a3e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 264630e6f01c3274db19e13c9a0137b7, type: 2}
+      objectReference: {fileID: 2100000, guid: 745ba8c74500a724697cdcae5cff30d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 6cae56de6db4e284689adf5c07e8a3e0, type: 3}
       propertyPath: m_Name
       value: Fish
