@@ -89,6 +89,8 @@ public class BaseTower : MonoBehaviour
 
     private void Attack()
     {
+        if (!_projectilePrefab) return;
+
         //Don't attack if no enemies are in range
         if (_enemies.Count == 0) return;
 
@@ -103,7 +105,8 @@ public class BaseTower : MonoBehaviour
         }
 
         //Attack closest enemy
-        Instantiate(_projectilePrefab, _projectileSocket.position, _frog.rotation, _frog);
+        GameObject projectileClone = Instantiate(_projectilePrefab, _projectileSocket.position, _frog.rotation, _frog);
+        projectileClone.GetComponent<BaseProjectile>().Init(closestEnemy.transform.position);
 
         _attackTimer = _fireDelay;
     }
