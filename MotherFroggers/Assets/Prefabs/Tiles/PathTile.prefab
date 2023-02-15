@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7459187867334651370}
   - component: {fileID: 6869245180684701504}
   - component: {fileID: 2950845999982356433}
+  - component: {fileID: 3187701454904996776}
   m_Layer: 6
   m_Name: PathTile
   m_TagString: Untagged
@@ -110,6 +111,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickableOnSpawn: 0
+--- !u!114 &3187701454904996776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441703931152675568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282959b0309f33f4984b7e90eda063a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectWithMaterial: {fileID: 7050523626936863213}
+  _textures:
+  - {fileID: 2800000, guid: 2879421f22898f94cb594aac3120a39c, type: 3}
+  - {fileID: 2800000, guid: fdead0fe3ae80894eb80949db4b2ae70, type: 3}
+  - {fileID: 2800000, guid: 73bab2cb6e8168a4391f4a4197b8ad36, type: 3}
+  _animationRate: 0.2
 --- !u!1001 &4776239258711721433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,12 +254,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9d76c843c519ca84ab6926d98ca1e247, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad431dface31b24478f4f3f3be89176c, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d76c843c519ca84ab6926d98ca1e247, type: 3}
       propertyPath: m_Name
       value: WaterTile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d76c843c519ca84ab6926d98ca1e247, type: 3}
+--- !u!1 &7050523626936863213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d76c843c519ca84ab6926d98ca1e247, type: 3}
+  m_PrefabInstance: {fileID: 7861336837252396220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7679672343112864599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d76c843c519ca84ab6926d98ca1e247, type: 3}

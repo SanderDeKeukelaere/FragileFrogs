@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LandEdgeTile
       objectReference: {fileID: 0}
+    - target: {fileID: 4405293447919449834, guid: 31083c2cbfa06ce41b46571f9665e9db, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad431dface31b24478f4f3f3be89176c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31083c2cbfa06ce41b46571f9665e9db, type: 3}
 --- !u!1001 &5379673636539919059
