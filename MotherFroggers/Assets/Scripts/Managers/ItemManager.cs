@@ -30,10 +30,13 @@ public class ItemManager : MonoBehaviour
         //Check if the clicked tile is clickable
         if (hitObject.GetComponent<Clickable>().IsClickable == false) return;
 
-        //Place the current item on the tile
         BaseTile tile = hitObject.GetComponent<BaseTile>();
         if (tile == null) return;
 
+        //Check if the clicked tile doesn't already have an item on it
+        if (tile.Item != null) return;
+
+        //Place the current item on the tile
         _currentItem.transform.position = tile.Socket.position;
         _currentItem.transform.parent = tile.transform;
     }
@@ -67,7 +70,7 @@ public class ItemManager : MonoBehaviour
         TileManager tileManager = GetComponent<TileManager>();
         if (tileManager == null) return;
 
-        List<MyEnums.TileType> itemPlaceableOn = _currentItem.GetComponent<Egg>().PlaceableOn;
+        List<MyEnums.TileType> itemPlaceableOn = _currentItem.GetComponent<BaseTower>().PlaceableOn;
         foreach (MyEnums.TileType tileType in itemPlaceableOn)
         {
             tileManager.SetClickableTilesOfTypeInRange(tileType, pathTile.transform.position, _hatchedRange);

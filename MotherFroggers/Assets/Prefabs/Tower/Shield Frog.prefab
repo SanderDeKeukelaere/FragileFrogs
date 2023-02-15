@@ -52,6 +52,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 0}
   _projectileSocket: {fileID: 0}
   _frog: {fileID: 2620490874376607329}
+  _placeableOn: 01000000
 --- !u!136 &4824615472186180529
 CapsuleCollider:
   m_ObjectHideFlags: 0

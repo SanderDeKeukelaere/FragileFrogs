@@ -57,7 +57,7 @@ public class Egg : MonoBehaviour
             return null;
         else
         {
-            GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count - 1)]);
+            GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count)]);
             if (tower == null) return null;
             
             tower.transform.parent = null;
