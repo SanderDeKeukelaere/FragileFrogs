@@ -4,9 +4,9 @@ using UnityEngine;
 
 abstract public class BaseProjectile : MonoBehaviour
 {
-    private Vector3 _target;
+    protected Vector3 _target;
 
-    void Init(Vector3 target)
+    public void Init(Vector3 target)
     {
         _target = target;
     }
