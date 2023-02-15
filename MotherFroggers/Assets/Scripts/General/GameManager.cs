@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private WaveManager _waveManager = null;
+    private ItemManager _itemManager = null;
 
     private AudioSource _audioBuildSource = null;
     private AudioSource _audioWaveSource = null;
@@ -16,13 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _buildMusic = null;
     [SerializeField] private AudioClip _waveMusic = null;
 
-    [SerializeField] private int _eggsToPlace = 3;
+    [SerializeField] private int _eggsToPlace = 2;
     public int EggsToPlace
     {
         get { return _eggsToPlace; }
     }
 
-    [SerializeField] private int _eggsPerWave = 3;
+    [SerializeField] private int _eggsPerWave = 2;
     public int EggsPerWave
     {
         get { return _eggsPerWave; }
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         _motherfrogger = FindAnyObjectByType<Motherfrogger>();
         _waveManager = GetComponent<WaveManager>();
+        _itemManager = GetComponent<ItemManager>();
         var audioSources = GetComponents<AudioSource>();
         _audioBuildSource = audioSources[0];
         _audioWaveSource = audioSources[1];
@@ -53,13 +55,37 @@ public class GameManager : MonoBehaviour
 
     public void NextWave()
     {
-        _waveManager.StartWave();
+        //Start wave if all eggs are placed
+        if (_isInWave == false && _eggsToPlace == 0)
+        {
+            _waveManager.StartWave();
 
-        _startButton.SetActive(false);
+            _startButton.SetActive(false);
 
-        _audioWaveSource.Play();
+            _audioWaveSource.Play();
 
-        _isInWave = true;
+            _isInWave = true;
+        }
+
+        //Check if valid placement tile is selected
+        if (_itemManager.CurrentItem != null && _isInWave == false)
+        {
+            //Check if tower placement
+            if (_itemManager.CurrentItem.GetComponent<BaseTower>())
+            {
+
+            }
+            //Check if eggs need to be placed
+            if (_itemManager.CurrentItem.GetComponent<Egg>())
+            {
+                if (_eggsToPlace > 0)
+                {
+
+                }
+                Debug.LogError("Handle placement");
+                _eggsToPlace--;
+            }
+        }
     }
 
     private void Update()
