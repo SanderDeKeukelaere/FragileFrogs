@@ -16,9 +16,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _buildMusic = null;
     [SerializeField] private AudioClip _waveMusic = null;
 
+    [SerializeField] private int _eggsToPlace = 1;
+    public int EggsToPlace
+    {
+        get { return _eggsToPlace; }
+    }
+
+    [SerializeField] private int _eggsPerWave = 3;
+    public int EggsPerWave
+    {
+        get { return _eggsPerWave; }
+    }
+
     bool _isInWave = true;
     public bool IsInWave { get { return _isInWave; } }
-
 
     private Motherfrogger _motherfrogger;
 
@@ -32,6 +43,12 @@ public class GameManager : MonoBehaviour
 
         _audioBuildSource.clip = _buildMusic;
         _audioWaveSource.clip = _waveMusic;
+
+        _startButton.SetActive(true);
+
+        _audioBuildSource.Play();
+
+        _isInWave = false;
     }
 
     public void NextWave()
@@ -54,6 +71,8 @@ public class GameManager : MonoBehaviour
             _audioBuildSource.Play();
 
             _isInWave = false;
+
+            _eggsToPlace += _eggsPerWave;
         }
 
         if(_isInWave)
