@@ -63,7 +63,7 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Tile contains egg");
 
         //Check if the egg is ready to hatch
-        /*if (eggOnTile.IsReadyToHatch)
+        if (eggOnTile.IsReadyToHatch)
         {
             Debug.Log("Egg is ready to hatch");
             //If so, hatch the egg
@@ -77,7 +77,7 @@ public class ItemManager : MonoBehaviour
             _currentItem = hatchedItem;
             _currentItem.transform.position = pathTile.Socket.position;
             _currentItem.transform.parent = pathTile.transform;
-        }*/
+        }
     }
 
     private bool IsValidClick(out GameObject hitObject)
