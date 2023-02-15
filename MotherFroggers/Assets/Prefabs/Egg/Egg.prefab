@@ -97,6 +97,7 @@ MonoBehaviour:
   _health: 1
   _wavesNeeded: 3
   _chance: 0.33
+  _placeableOn: 01000000
   _towers:
   - {fileID: 5714931262838323714, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
 --- !u!95 &3268819664514971712

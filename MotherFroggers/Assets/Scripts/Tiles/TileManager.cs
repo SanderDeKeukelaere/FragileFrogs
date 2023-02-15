@@ -13,6 +13,17 @@ public class TileManager : MonoBehaviour
         get { return _path; }
     }
 
+    private List<BaseTile> _pathTiles = new List<BaseTile>();
+    public List<BaseTile> PathTiles
+    {
+        get { return _pathTiles; }
+    }
+    private List<BaseTile> _worldTiles = new List<BaseTile>();
+    public List<BaseTile> WorldTiles
+    {
+        get { return _worldTiles; }
+    }
+
     private bool[,] _tileData;
     private int _width, _height;
 
@@ -50,6 +61,9 @@ public class TileManager : MonoBehaviour
 
             if (tile.GetComponent<PathTile>())
             {
+                //Add tile to path tile list
+                _pathTiles.Add(tile);
+
                 if (tile.GetComponent<PathTile>().IsStart)
                 {
                     _startTileX = (int)tile.transform.position.x;
@@ -60,6 +74,11 @@ public class TileManager : MonoBehaviour
                     _endTileX = (int)tile.transform.position.x;
                     _endTileZ = (int)tile.transform.position.z;
                 }
+            }
+            else
+            {
+                //Add tile to world tile list
+                _worldTiles.Add(tile);
             }
         }
 
@@ -135,6 +154,84 @@ public class TileManager : MonoBehaviour
         else
         {
             Debug.LogError($"No path found");
+        }
+    }
+
+    public void SetClickableTilesOfType(MyEnums.TileType tileType)
+    {
+        //Set all tiles of given type clickable
+        switch (tileType)
+        {
+            case MyEnums.TileType.PATH:
+                {
+                    foreach (BaseTile tile in _pathTiles)
+                    {
+                        tile.GetComponent<Clickable>().IsClickable = true;
+                    }
+
+                    break;
+                }
+
+            case MyEnums.TileType.WORLD:
+                {
+                    foreach (BaseTile tile in _worldTiles)
+                    {
+                        tile.GetComponent<Clickable>().IsClickable = true;
+                    }
+
+                    break;
+                }
+
+            default:
+                break;
+        }
+    }
+
+    public void SetClickableTilesOfTypeInRange(MyEnums.TileType tileType, Vector3 center, int range)
+    {
+        //Find all tiles of given type in the given range
+        Collider[] tilesInRange = Physics.OverlapBox(center, new Vector3((float)range, 1.0f, (float)range), Quaternion.identity, LayerMask.GetMask("Tile"));
+
+        foreach (Collider collider in tilesInRange)
+        {
+            //Make sure we only check tiles of the given type
+            switch (tileType)
+            {
+                case MyEnums.TileType.PATH:
+                    {
+                        PathTile tile = collider.GetComponent<PathTile>();
+                        if (tile == null) continue;
+
+                        tile.GetComponent<Clickable>().IsClickable = true;
+
+                        break;
+                    }
+
+                case MyEnums.TileType.WORLD:
+                    {
+                        WorldTile tile = collider.GetComponent<WorldTile>();
+                        if (tile == null) continue;
+
+                        tile.GetComponent<Clickable>().IsClickable = true;
+
+                        break;
+                    }
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void DisableAllClickableTiles()
+    {
+        foreach (BaseTile tile in _pathTiles)
+        {
+            tile.GetComponent<Clickable>().IsClickable = false;
+        }
+        foreach (BaseTile tile in _worldTiles)
+        {
+            tile.GetComponent<Clickable>().IsClickable = false;
         }
     }
 }
