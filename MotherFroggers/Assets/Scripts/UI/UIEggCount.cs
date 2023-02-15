@@ -18,6 +18,6 @@ public class UIEggCount : MonoBehaviour
     }
     private void Update()
     {
-        _text.text = $"";
+        _text.text = $"{_gameManager.EggsToPlace}/{_gameManager.EggsPerWave}";
     }
 }
