@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: _speed
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 7428675375878089012, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      propertyPath: _maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7866501053914545531, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
       propertyPath: m_Mesh
       value: 

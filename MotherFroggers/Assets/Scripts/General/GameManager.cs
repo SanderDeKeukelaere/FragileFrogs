@@ -18,8 +18,11 @@ public class GameManager : MonoBehaviour
 
     bool _isInWave = true;
 
+    private Motherfrogger _motherfrogger;
+
     private void Start()
     {
+        _motherfrogger = FindAnyObjectByType<Motherfrogger>();
         _waveManager = GetComponent<WaveManager>();
         var audioSources = GetComponents<AudioSource>();
         _audioBuildSource = audioSources[0];
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(_isInWave && _waveManager.HasWaveEnded() && BasicEnemy.Enemies.Count == 0)
+        if(_isInWave && _waveManager.HasWaveEnded() && BasicEnemy.Enemies.Count == 0 && _motherfrogger.CurrentHp > 0)
         {
             _startButton.SetActive(true);
 

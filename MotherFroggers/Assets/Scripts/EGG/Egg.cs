@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Egg : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] GameObject _attackVFXTemplate = null;
+    [SerializeField] private GameObject _deathVFXTemplate = null;
 
-    private bool _readyToHatch = false;
-    public bool readyToHatch
+    [SerializeField] private bool _isReadyToHatch = false;
+    public bool IsReadyToHatch
     {
-        get { return _readyToHatch; }
+        get { return _isReadyToHatch; }
     }
 
     private bool _hatched = false;
@@ -38,26 +37,29 @@ public class Egg : MonoBehaviour
 
     [SerializeField] private List<GameObject> _towers;
 
-    const string _hatching = "Hatching";
-    void Start()
-    {
-        
-    }
+    private const string HATCHING = "Hatching";
 
+    private void Start()
+    {
+        if (_isReadyToHatch)
+        {
+            ReadyToHatch();
+        }
+    }
 
     public GameObject Hatch()
     {
-        if (_towers.Count == 0 || _hatched || !_readyToHatch)
+        if (_towers.Count == 0 || _hatched || !_isReadyToHatch)
             return null;
         else
         {
             GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count - 1)]);
-            if (tower == null)
-                return null;
+            if (tower == null) return null;
+            
             tower.transform.parent = null;
-
             _hatched = true;
-            Invoke(KILL_METHODNAME, 0.2f);
+
+            Invoke(DESTROY_METHODNAME, 0.1f);
 
             return tower;
         }
@@ -70,13 +72,13 @@ public class Egg : MonoBehaviour
         if (animator == null)
             return;
 
-        animator.SetTrigger(_hatching);
+        animator.SetTrigger(HATCHING);
     }
 
     public void Hit()
     {
-        if (_attackVFXTemplate)
-            Instantiate(_attackVFXTemplate, transform.position, transform.rotation);
+        if (_deathVFXTemplate)
+            Instantiate(_deathVFXTemplate, transform.position, transform.rotation);
 
         Kill();
     }
@@ -87,9 +89,19 @@ public class Egg : MonoBehaviour
     }
 
 
-    private const string KILL_METHODNAME = "Destroy";
+    private const string DESTROY_METHODNAME = "Destroy";
     private void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BasicEnemy enemy = other.GetComponent<BasicEnemy>();
+        if(enemy != null)
+        {
+            Hit();
+            enemy.DoDamage(0.5f);
+        }
     }
 }
