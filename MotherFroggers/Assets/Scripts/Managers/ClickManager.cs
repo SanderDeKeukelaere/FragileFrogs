@@ -15,13 +15,11 @@ public class ClickManager : MonoBehaviour
         {
             if (_itemManager.CurrentItem != null)
             {
-                Debug.Log("Handle placing item");
                 //Handle placing the current item
                 _itemManager.HandlePlacingItem();
             }
             else
             {
-                Debug.Log("Handle selecting egg");
                 //Handle selecting an egg
                 _itemManager.HandleSelectingEgg();
             }

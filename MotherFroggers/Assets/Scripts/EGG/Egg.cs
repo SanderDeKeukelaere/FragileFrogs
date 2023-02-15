@@ -35,6 +35,12 @@ public class Egg : MonoBehaviour
         set { _chance = value; }
     }
 
+    [SerializeField] protected List<MyEnums.TileType> _placeableOn = new List<MyEnums.TileType>();
+    public List<MyEnums.TileType> PlaceableOn
+    {
+        get { return _placeableOn; }
+    }
+
     [SerializeField] private List<GameObject> _towers;
 
     private const string HATCHING = "Hatching";
@@ -42,9 +48,7 @@ public class Egg : MonoBehaviour
     private void Start()
     {
         if (_isReadyToHatch)
-        {
             ReadyToHatch();
-        }
     }
 
     public GameObject Hatch()

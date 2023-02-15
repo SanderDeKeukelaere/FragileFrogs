@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    [SerializeField] private int _hatchedRange = 3;
+
     private float _maxHitDistance = 5.0f;
 
     private GameObject _currentItem = null;
@@ -27,12 +29,10 @@ public class ItemManager : MonoBehaviour
 
         //Check if the clicked tile is clickable
         if (hitObject.GetComponent<Clickable>().IsClickable == false) return;
-        Debug.Log("Clickable tile hit");
 
         //Place the current item on the tile
         BaseTile tile = hitObject.GetComponent<BaseTile>();
         if (tile == null) return;
-        Debug.Log("Moved item to clicked tile");
 
         _currentItem.transform.position = tile.Socket.position;
         _currentItem.transform.parent = tile.transform;
@@ -53,31 +53,46 @@ public class ItemManager : MonoBehaviour
         //Check if the clicked tile contains an egg
         PathTile pathTile = hitObject.GetComponent<PathTile>();
         if (pathTile == null) return;
-        Debug.Log("PathTile hit");
 
         GameObject itemOnTile = pathTile.Item;
         if (itemOnTile == null) return;
 
         Egg eggOnTile = itemOnTile.GetComponent<Egg>();
         if (eggOnTile == null) return;
-        Debug.Log("Tile contains egg");
 
-        //Check if the egg is ready to hatch
-        if (eggOnTile.IsReadyToHatch)
+        //Handle hatching the egg
+        if (HandleEggHatching(pathTile, eggOnTile) == false) return;
+
+        //Set all tiles in the hatched egg's range clickable
+        TileManager tileManager = GetComponent<TileManager>();
+        if (tileManager == null) return;
+
+        List<MyEnums.TileType> itemPlaceableOn = _currentItem.GetComponent<Egg>().PlaceableOn;
+        foreach (MyEnums.TileType tileType in itemPlaceableOn)
         {
-            Debug.Log("Egg is ready to hatch");
-            //If so, hatch the egg
-            GameObject hatchedItem = eggOnTile.Hatch();
-            if (hatchedItem == null) return;
-
-            //Detach the egg from clicked tile
-            pathTile.Item = null;
-
-            //Select the hatched item as current item
-            _currentItem = hatchedItem;
-            _currentItem.transform.position = pathTile.Socket.position;
-            _currentItem.transform.parent = pathTile.transform;
+            tileManager.SetClickableTilesOfTypeInRange(tileType, pathTile.transform.position, _hatchedRange);
         }
+    }
+
+    private bool HandleEggHatching(PathTile tile, Egg egg)
+    {
+        //Check if the egg is ready to hatch
+        if (egg.IsReadyToHatch == false)
+            return false;
+
+        //If so, hatch the egg
+        GameObject hatchedItem = egg.Hatch();
+        if (hatchedItem == null) return false;
+
+        //Detach the egg from clicked tile
+        tile.Item = null;
+
+        //Select the hatched item as current item
+        _currentItem = hatchedItem;
+        _currentItem.transform.position = tile.Socket.position;
+        _currentItem.transform.parent = tile.transform;
+
+        return true;
     }
 
     private bool IsValidClick(out GameObject hitObject)
