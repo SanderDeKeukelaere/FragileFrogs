@@ -78,7 +78,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.04
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4450839781172913557
 MonoBehaviour:
@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e743b40f1d90ece49bf7fe5235f5d01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackVFXTemplate: {fileID: 851303482401682087, guid: 7a0133c93e371d8449c7304d55215e06, type: 3}
+  _deathVFXTemplate: {fileID: 0}
+  _isReadyToHatch: 0
 --- !u!95 &3268819664514971712
 Animator:
   serializedVersion: 5
@@ -123,6 +124,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,6 +176,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 68b07b097341e884d8dc4eeed5ccb7ec, type: 3}
       propertyPath: m_Name

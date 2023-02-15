@@ -13,16 +13,17 @@ public class ClickManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
             if (_itemManager.CurrentItem != null)
             {
-                //Handle the click
-                _itemManager.HandleClick();
+                Debug.Log("Handle placing item");
+                //Handle placing the current item
+                _itemManager.HandlePlacingItem();
             }
             else
             {
-                //Handle selecting an item
-                //...
+                Debug.Log("Handle selecting egg");
+                //Handle selecting an egg
+                _itemManager.HandleSelectingEgg();
             }
         }
     }

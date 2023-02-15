@@ -11,7 +11,8 @@ public class BaseTile : MonoBehaviour
         get { return _socket; }
     }
 
-    protected GameObject _item = null;
+    [SerializeField] protected GameObject _item = null;
+    //protected GameObject _item = null;
     public GameObject Item
     {
         get { return _item; }
