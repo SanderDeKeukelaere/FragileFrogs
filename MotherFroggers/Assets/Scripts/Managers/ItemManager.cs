@@ -15,6 +15,14 @@ public class ItemManager : MonoBehaviour
         set { _currentItem = value; }
     }
 
+    private BaseTile _currentTile = null;
+
+    private bool _hasValidPlacement = false;
+    public bool HasValidPlacement
+    {
+        get { return _hasValidPlacement; }
+    }
+
     public void HandlePlacingItem()
     {
         //Check if we have an item to place
@@ -39,6 +47,10 @@ public class ItemManager : MonoBehaviour
         //Place the current item on the tile
         _currentItem.transform.position = tile.Socket.position;
         _currentItem.transform.parent = tile.transform;
+
+        //Save which tile the item is currently on
+        _currentTile = tile;
+        _hasValidPlacement = true;
     }
 
     public void HandleSelectingEgg()
@@ -77,6 +89,22 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    public bool ConfirmItemPlacement()
+    {
+        //Only continue if the placement is valid
+        if (!_hasValidPlacement) return false;
+
+        //Set the current item as the item of the tile it's currently placed on
+        _currentTile.Item = _currentItem;
+
+        //Reset variables
+        _currentItem = null;
+        _currentTile = null;
+        _hasValidPlacement = false;
+
+        return true;
+    }
+
     private bool HandleEggHatching(PathTile tile, Egg egg)
     {
         //Check if the egg is ready to hatch
@@ -94,6 +122,8 @@ public class ItemManager : MonoBehaviour
         _currentItem = hatchedItem;
         _currentItem.transform.position = tile.Socket.position;
         _currentItem.transform.parent = tile.transform;
+
+        _hasValidPlacement = true;
 
         return true;
     }
