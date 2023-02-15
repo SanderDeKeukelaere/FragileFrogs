@@ -3892,6 +3892,7 @@ GameObject:
   - component: {fileID: 477535261}
   - component: {fileID: 477535260}
   - component: {fileID: 477535259}
+  - component: {fileID: 477535262}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3958,13 +3959,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477535258}
   m_LocalRotation: {x: -0, y: 0.83529884, z: -0.5497963, w: 0}
-  m_LocalPosition: {x: 10.0002, y: 12.000239, z: 17.00034}
+  m_LocalPosition: {x: 10.0002, y: 5.11, z: 9.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 66.706, y: 180, z: 0}
+--- !u!114 &477535262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477535258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfc2f1dfb9f0374d906f9422c98c646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: {x: 19, y: 22}
+  _min: {x: 2, y: 7}
+  _zoomBounds: {x: -5, y: 5}
+  _epsilon: {x: 10, y: 10}
+  _moveSpeed: 8
+  _zoomSpeed: 1
 --- !u!1001 &485475673
 PrefabInstance:
   m_ObjectHideFlags: 0
