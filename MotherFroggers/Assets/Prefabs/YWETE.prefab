@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8119774354347222901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9101414885780115532}
+  - component: {fileID: 943524131006502443}
+  m_Layer: 0
+  m_Name: YWETE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9101414885780115532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119774354347222901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 864.7553, y: 513.68726, z: -0.7930147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943524131006502443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119774354347222901}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b191d4d835c613f4e8f5a007e7b66a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waves:
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 5
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 10
+    _duration: 5.1666665
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 5
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 2
+    _duration: 7.233333
+  - _enemies:
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 5
+    _duration: 5.166667
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 5
+    - _enemy: {fileID: 5379323945952926660, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      _spawnAmount: 2
+    _duration: 7.233333
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 2
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 4
+    - _enemy: {fileID: 5379323945952926660, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      _spawnAmount: 2
+    _duration: 8.266666
+  - _enemies:
+    - _enemy: {fileID: 5379323945952926660, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      _spawnAmount: 3
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 7
+    _duration: 10.333333
+  - _enemies:
+    - _enemy: {fileID: 5379323945952926660, guid: d7e638f87caa2004499dad8ecacfb8ec, type: 3}
+      _spawnAmount: 2
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 5
+    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
+      _spawnAmount: 10
+    _duration: 17.566668
