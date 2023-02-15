@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _buildMusic = null;
     [SerializeField] private AudioClip _waveMusic = null;
 
-    [SerializeField] private int _eggsToPlace = 1;
+    [SerializeField] private int _eggsToPlace = 3;
     public int EggsToPlace
     {
         get { return _eggsToPlace; }
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
             _isInWave = false;
 
-            _eggsToPlace += _eggsPerWave;
+            _eggsToPlace = _eggsPerWave;
         }
 
         if(_isInWave)

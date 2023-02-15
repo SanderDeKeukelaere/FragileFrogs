@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIEggCount : MonoBehaviour
 {
     GameManager _gameManager;
+    ItemManager _itemManager;
     [SerializeField] GameObject _ui;
     [SerializeField] TextMeshProUGUI _text;
     private void Awake()
@@ -14,6 +15,11 @@ public class UIEggCount : MonoBehaviour
         if (_gameManager == null)
         {
             Debug.LogError("Unable to find gamemanager");
+        }
+        _itemManager = FindAnyObjectByType<ItemManager>();
+        if (_itemManager == null)
+        {
+            Debug.LogError("Unable to find itemmanager");
         }
     }
     private void Update()
