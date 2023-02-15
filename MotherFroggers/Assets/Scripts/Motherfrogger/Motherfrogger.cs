@@ -20,14 +20,5 @@ public class Motherfrogger : MonoBehaviour
         }
         _currentHp -= other.gameObject.GetComponent<BasicEnemy>().Damage;
         Destroy(other.gameObject);
-
-        UpdateDead();
-    }
-    private void UpdateDead()
-    {
-        if (_currentHp <= 0f)
-        {
-            Debug.LogError("Handle game end");
-        }
     }
 }
