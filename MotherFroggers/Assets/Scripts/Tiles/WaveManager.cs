@@ -21,12 +21,13 @@ public class WaveManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_spawner.IsSpawning == false && _currentWave < _waves.Count)
-        {
-            StartWave();
-            _currentWave++;
-        }
     }
+
+    public bool HasWaveEnded()
+    {
+        return !_spawner.IsSpawning;
+    }
+
     public void StartWave()
     {
         List<Tuple<int, GameObject>> wave = new List<Tuple<int, GameObject>>();
@@ -35,6 +36,7 @@ public class WaveManager : MonoBehaviour
             wave.Add(new Tuple<int, GameObject>(waveEnemy._spawnAmount, waveEnemy._enemy));
         }
         _spawner.StartWave(wave, _waves[_currentWave]._duration);
+        _currentWave++;
     }
 }
 
