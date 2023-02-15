@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 37e0509aaa47c934b8bdf8064559ba82, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fcb24101622be754a9275107484773e9, type: 2}
+      objectReference: {fileID: 2100000, guid: dc90fd998f2d6354f9b72ccabf118924, type: 2}
     - target: {fileID: 919132149155446097, guid: 37e0509aaa47c934b8bdf8064559ba82, type: 3}
       propertyPath: m_Name
       value: WallFrog
@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c3af9040ffb81c84d83ee967982e6628, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 12ccf61f54c23314386bed6a2b49cb9e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2b17868d9246ce3499d24cd2fcdd092b, type: 2}
     - target: {fileID: 919132149155446097, guid: c3af9040ffb81c84d83ee967982e6628, type: 3}
       propertyPath: m_Name
       value: Tower
