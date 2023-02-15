@@ -94,4 +94,14 @@ public class Egg : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BasicEnemy enemy = other.GetComponent<BasicEnemy>();
+        if(enemy != null)
+        {
+            Hit();
+            enemy.DoDamage(0.5f);
+        }
+    }
 }
