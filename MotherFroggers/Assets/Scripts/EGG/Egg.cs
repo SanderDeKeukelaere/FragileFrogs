@@ -5,9 +5,15 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject _attackVFXTemplate = null;
+    [SerializeField] GameObject _attackVFXTemplate = null;
 
     private bool _readyToHatch = false;
+    public bool readyToHatch
+    {
+        get { return _readyToHatch; }
+    }
+
+    private bool _hatched = false;
 
     [SerializeField] private int _health = 1;
     public int Health
@@ -38,40 +44,27 @@ public class Egg : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Test"))
-            WaveEnded();
-    }
-
-    public void WaveEnded()
-    {
-        if (_readyToHatch)
-            return;
-
-        if(--_wavesNeeded <= 0)
-            ReadyToHatch();
-        else if(Random.Range(0.0f, 1.0f) <= _chance)
-        {
-            ReadyToHatch();
-        }
-    }
 
     public GameObject Hatch()
     {
-        if (_towers.Count == 0)
+        if (_towers.Count == 0 || _hatched || !_readyToHatch)
             return null;
         else
         {
-            return Instantiate(_towers[Random.Range(0, _towers.Count - 1)]);
+            GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count - 1)]);
+            if (tower == null)
+                return null;
+            tower.transform.parent = null;
+
+            _hatched = true;
+            Invoke(KILL_METHODNAME, 0.2f);
+
+            return tower;
         }
     }
 
-    void ReadyToHatch()
+    public void ReadyToHatch()
     {
-        _readyToHatch = true;
-
         Animator animator = transform.GetComponent<Animator>();
 
         if (animator == null)
@@ -82,25 +75,21 @@ public class Egg : MonoBehaviour
 
     public void Hit()
     {
-        if(--_health <= 0)
-            Kill();
+        if (_attackVFXTemplate)
+            Instantiate(_attackVFXTemplate, transform.position, transform.rotation);
+
+        Kill();
     }
 
     private void Kill()
     {
-        if (_attackVFXTemplate)
-            Instantiate(_attackVFXTemplate, transform.position, transform.rotation);
-
-
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Hit();
 
-        BasicEnemy enemy = other.GetComponent<BasicEnemy>();
-        if(enemy)
-            enemy.DoDamage(1);
+    private const string KILL_METHODNAME = "Destroy";
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
