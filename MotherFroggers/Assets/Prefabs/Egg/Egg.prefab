@@ -75,7 +75,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554538626499830642}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -92,8 +92,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e743b40f1d90ece49bf7fe5235f5d01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathVFXTemplate: {fileID: 0}
   _isReadyToHatch: 0
+  _attackVFXTemplate: {fileID: 851303482401682087, guid: 7a0133c93e371d8449c7304d55215e06, type: 3}
+  _health: 1
+  _wavesNeeded: 3
+  _chance: 0.33
 --- !u!95 &3268819664514971712
 Animator:
   serializedVersion: 5

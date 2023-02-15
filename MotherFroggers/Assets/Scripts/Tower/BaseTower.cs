@@ -27,7 +27,8 @@ public class BaseTower : MonoBehaviour
         //Check if enough time has passed since last attack
         if (_attackTimer <= 0f)
         {
-            _attackTimer = _fireDelay;
+            EnemyCleanup();
+            Attack();
         }
 
         //Update attack timer
@@ -69,7 +70,9 @@ public class BaseTower : MonoBehaviour
         }
 
         //Attack closest enemy
-        //TODO: IMPLEMENT DAMAGEs
+        BasicEnemy enemyComponent = closestEnemy.GetComponent<BasicEnemy>();
+        enemyComponent.DoDamage(_damage);
+        _attackTimer = _fireDelay;
     }
 
     private void OnTriggerEnter(Collider other)
