@@ -33,8 +33,6 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         _spawnLocation = FindObjectOfType<TileManager>().Path[0];
-        Debug.Log(_spawnLocation);
-        Debug.Log(FindObjectOfType<TileManager>().Path.Count);
     }
     private void Update()
     {

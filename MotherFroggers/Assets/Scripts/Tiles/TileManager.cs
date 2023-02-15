@@ -96,23 +96,23 @@ public class TileManager : MonoBehaviour
         _endTileX -= minX;
         _endTileZ -= minZ;
 
-        string map = "";
-        for (int x = 0; x < _width; x++)
-        {
-            for (int z = 0; z < _height; z++)
-            {
-                if (_tileData[x, z])
-                {
-                    map += "1";
-                }
-                else
-                {
-                    map += "0";
-                }
-            }
-            map += "\n";
-        }
-        Debug.Log(map);
+        //string map = "";
+        //for (int x = 0; x < _width; x++)
+        //{
+        //    for (int z = 0; z < _height; z++)
+        //    {
+        //        if (_tileData[x, z])
+        //        {
+        //            map += "1";
+        //        }
+        //        else
+        //        {
+        //            map += "0";
+        //        }
+        //    }
+        //    map += "\n";
+        //}
+        //Debug.Log(map);
 
         List<Node> pathNodes = AStar.FindPath(_startTileX, _startTileZ, _endTileX, _endTileZ, _tileData);
         _path = new List<Vector3>();
