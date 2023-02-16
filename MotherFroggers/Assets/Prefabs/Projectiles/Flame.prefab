@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0a62e7fc900f94d9aca53e66107248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damagePerSecond: 8
+  _damagePerSecond: 16
   _duration: 1
 --- !u!1 &8164518595251225564
 GameObject:
