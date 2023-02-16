@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarRangeTower
       objectReference: {fileID: 0}
+    - target: {fileID: 8360243723277862410, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c2f5ec92e34aa1d4184234e6b907ae4d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
