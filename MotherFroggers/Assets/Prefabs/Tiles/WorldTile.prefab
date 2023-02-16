@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71046b96d2cb9084183b12c89b2a3a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clickableOnSpawn: 0
+  _clickableOnSpawn: 1
   _clickableIndicator: {fileID: 3830928869030938256}
 --- !u!1 &7511644101643644819
 GameObject:
