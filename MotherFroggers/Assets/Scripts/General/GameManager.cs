@@ -101,6 +101,9 @@ public class GameManager : MonoBehaviour
                 //Remove the confirmed item
                 _remainingItemsToPlace.RemoveAt(0);
 
+                //Deactivate the clickable indicators
+                _tileManager.SetClickableIndicatorState(false);
+
                 //Spawn the next item to place if there are items left
                 if (_remainingItemsToPlace.Count > 0)
                     SpawnNextItemToPlace();
@@ -193,6 +196,9 @@ public class GameManager : MonoBehaviour
                 {
                     _tileManager.SetClickableTilesOfType(tileType);
                 }
+
+                //Activate the clickable indicators
+                _tileManager.SetClickableIndicatorState(true);
             }
         }
         if (_itemManager.CurrentItem.GetComponent<Egg>())
@@ -202,6 +208,9 @@ public class GameManager : MonoBehaviour
             {
                 _tileManager.SetClickableTilesOfType(tileType);
             }
+
+            //Activate the clickable indicators
+            _tileManager.SetClickableIndicatorState(true);
         }
     }
 }
