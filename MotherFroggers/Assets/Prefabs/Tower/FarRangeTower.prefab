@@ -64,6 +64,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1984175701276502116, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
+      propertyPath: _fireDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984175701276502116, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
       propertyPath: _projectilePrefab
       value: 
       objectReference: {fileID: 3825052922770938894, guid: 2f1a4982b7d831845a227fc9f7b1b261, type: 3}
