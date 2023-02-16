@@ -14,6 +14,8 @@ public class BaseTower : MonoBehaviour
     [SerializeField] private Transform _projectileSocket = null;
     [SerializeField] private Transform _frog = null;
 
+    [SerializeField] private AudioSource _fireSound = null;
+
     [SerializeField] protected List<MyEnums.TileType> _placeableOn = new List<MyEnums.TileType>();
     public List<MyEnums.TileType> PlaceableOn
     {
@@ -121,6 +123,9 @@ public class BaseTower : MonoBehaviour
         //Attack closest enemy
         GameObject projectileClone = Instantiate(_projectilePrefab, _projectileSocket.position, _frog.rotation, _frog);
         projectileClone.GetComponent<BaseProjectile>().Init(closestEnemy.transform.position);
+
+        if (_fireSound != null)
+            _fireSound.Play();
 
         _attackTimer = _fireDelay;
     }
