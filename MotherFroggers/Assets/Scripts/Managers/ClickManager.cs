@@ -5,12 +5,6 @@ using UnityEngine;
 public class ClickManager : MonoBehaviour
 {
     [SerializeField] ItemManager _itemManager = null;
-
-    private bool _handleClicks = true;
-    public bool HandleClicks
-    {
-        set { _handleClicks = value; }
-    }
     
 
     private void Update()
@@ -24,12 +18,6 @@ public class ClickManager : MonoBehaviour
 
     private void HandleClick()
     {
-        if (_handleClicks == false)
-        {
-            _handleClicks = true;
-            return;
-        }
-
         if (_itemManager.CurrentItem != null)
         {
             //Handle placing the current item
