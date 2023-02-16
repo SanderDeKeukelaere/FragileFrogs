@@ -24,6 +24,7 @@ public class UIEggCount : MonoBehaviour
     }
     private void Update()
     {
+        gameObject.SetActive(_itemManager.CurrentItem != null);
         _text.text = $"{_gameManager.RemainingEggsToPlace}";
         _ui.SetActive(!_gameManager.IsInWave);
     }
