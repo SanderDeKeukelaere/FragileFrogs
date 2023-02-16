@@ -62,7 +62,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7881591872709311693}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2837072599770683458
 MeshFilter:
@@ -148,6 +148,7 @@ Transform:
   - {fileID: 8379089200617663276}
   - {fileID: 8961569624337655261}
   - {fileID: 1611187866744449576}
+  - {fileID: 2330166505362014639}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickableOnSpawn: 0
+  _clickableIndicator: {fileID: 3830928869030938256}
 --- !u!1 &7511644101643644819
 GameObject:
   m_ObjectHideFlags: 0

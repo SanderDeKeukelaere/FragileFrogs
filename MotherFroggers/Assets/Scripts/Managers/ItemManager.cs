@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField] private int _hatchedRange = 3;
+    [SerializeField] private int _hatchedRange = 2;
 
     [SerializeField] private AudioSource _placeTowerSFX = null;
 
