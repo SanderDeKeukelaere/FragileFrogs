@@ -22,10 +22,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> _initialItemsToPlace = new List<GameObject>();
     [SerializeField] private List<GameObject> _itemsToPlacePerWave = new List<GameObject>();
 
+    [SerializeField] private List<Egg> _eggs = new List<Egg>();
+
     private List<GameObject> _remainingItemsToPlace = new List<GameObject>();
     public int RemainingItemsToPlace
     {
         get { return _remainingItemsToPlace.Count; }
+    }
+    public int RemainingEggsToPlace
+    {
+        get
+        {
+            int eggCount = 0;
+            foreach (GameObject obj in _remainingItemsToPlace)
+            {
+                if (obj.GetComponent<Egg>()) ++eggCount;
+            }
+            return eggCount;
+        }
     }
 
     [SerializeField] private Transform _itemSpawnSocket = null;
@@ -106,7 +120,14 @@ public class GameManager : MonoBehaviour
 
             _isInWave = false;
 
-            _remainingItemsToPlace = _itemsToPlacePerWave;
+            _remainingItemsToPlace = new List<GameObject>(_itemsToPlacePerWave);
+
+            SpawnNextItemToPlace();
+
+            foreach(Egg egg in _eggs)
+            {
+                egg.TryHatch();
+            }
         }
 
         if(_isInWave)
@@ -135,6 +156,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SpawnItemToPlace(GameObject newPlacementObject)
+    {
+        _remainingItemsToPlace.Add(newPlacementObject);
+        SpawnNextItemToPlace();
+    }
+
     private void SpawnNextItemToPlace()
     {
         //Only continue if there are items left to place and if there is an item & tile manager
@@ -145,6 +172,11 @@ public class GameManager : MonoBehaviour
 
         //Set the spawned item as current item of the item manager
         _itemManager.CurrentItem = spawnedItem;
+
+        if(spawnedItem.GetComponent<Egg>())
+        {
+            _eggs.Add(spawnedItem.GetComponent<Egg>());
+        }
 
         //Make tiles clickable depending on type of item to place
         if (_itemManager.CurrentItem.GetComponent<BaseTower>())

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BaseTower : MonoBehaviour
 {
+    [SerializeField] private Transform _debugTarget = null;
     [SerializeField] private float _fireDelay = 1f; //Amount of seconds between firing
     [SerializeField] private float _damage = 1f;    
     [SerializeField] private float _range = 1f;
@@ -98,16 +99,24 @@ public class BaseTower : MonoBehaviour
         if (!_projectilePrefab) return;
 
         //Don't attack if no enemies are in range
-        if (_enemies.Count == 0) return;
+        if (_enemies.Count == 0 && !_debugTarget) return;
 
-        //Get enemy closest to this tower
-        GameObject closestEnemy = _enemies[0];
-        foreach (GameObject enemy in _enemies)
+        GameObject closestEnemy = null;
+        if (!_debugTarget)
         {
-            if (Vector3.Distance(transform.position, enemy.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+            //Get enemy closest to this tower
+            closestEnemy = _enemies[0];
+            foreach (GameObject enemy in _enemies)
             {
-                closestEnemy = enemy;
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Vector3.Distance(transform.position, closestEnemy.transform.position))
+                {
+                    closestEnemy = enemy;
+                }
             }
+        }
+        else 
+        {
+            closestEnemy = _debugTarget.gameObject;
         }
 
         //Attack closest enemy

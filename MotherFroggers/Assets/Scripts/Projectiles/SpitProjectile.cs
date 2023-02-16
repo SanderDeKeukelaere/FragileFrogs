@@ -35,7 +35,6 @@ public class SpitProjectile : BaseProjectile
             _verticalVelocity = (_target - transform.position - Physics.gravity * shootTime * shootTime) / shootTime;
             _verticalVelocity.x = 0.0f;
             _verticalVelocity.z = 0.0f;
-            _verticalVelocity /= 2.0f;
         }
 
         _verticalVelocity += Physics.gravity * Time.deltaTime;

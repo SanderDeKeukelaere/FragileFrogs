@@ -23,6 +23,13 @@ public class ItemManager : MonoBehaviour
         get { return _hasValidPlacement; }
     }
 
+    private TileManager _tileManager = null;
+
+    private void Start()
+    {
+        _tileManager = GetComponent<TileManager>();
+    }
+
     public void HandlePlacingItem()
     {
         //Check if we have an item to place
@@ -91,6 +98,8 @@ public class ItemManager : MonoBehaviour
 
     public bool ConfirmItemPlacement()
     {
+        if (!_currentTile) return false;
+
         //Only continue if the placement is valid and if there is a tile manager
         TileManager tileManager = GetComponent<TileManager>();
 
@@ -116,17 +125,25 @@ public class ItemManager : MonoBehaviour
         if (egg.IsReadyToHatch == false)
             return false;
 
+
+        egg.Hatch();
         //If so, hatch the egg
-        GameObject hatchedItem = egg.Hatch();
-        if (hatchedItem == null) return false;
+        //GameObject hatchedItem = egg.Hatch();
+        //if (hatchedItem == null) return false;
 
-        //Detach the egg from clicked tile
-        tile.Item = null;
+        ////Detach the egg from clicked tile
+        //tile.Item = null;
 
-        //Select the hatched item as current item
-        _currentItem = hatchedItem;
-        _currentItem.transform.parent = tile.Socket;
-        _currentItem.transform.localPosition = Vector3.zero;
+        ////Select the hatched item as current item
+        //_currentItem = hatchedItem;
+        //_currentItem.transform.parent = tile.Socket;
+        //_currentItem.transform.localPosition = Vector3.zero;
+
+        //List<MyEnums.TileType> itemPlaceableOn = _currentItem.GetComponent<BaseTower>().PlaceableOn;
+        //foreach (MyEnums.TileType tileType in itemPlaceableOn)
+        //{
+        //    _tileManager.SetClickableTilesOfType(tileType);
+        //}
 
         _hasValidPlacement = true;
 

@@ -21,12 +21,16 @@ public class Egg : MonoBehaviour
         set { _health = value; }
     }
 
+    [SerializeField] private float _damage = 1.0f;
+
     [SerializeField] private int _wavesNeeded = 3;
     public int WavesNeeded
     {
         get { return _wavesNeeded; }
         set { _wavesNeeded = value; }
     }
+
+    private int _wavesAlive = 0;
 
     [SerializeField] private float _chance = 0.33f;
     public float Chance
@@ -51,26 +55,31 @@ public class Egg : MonoBehaviour
             ReadyToHatch();
     }
 
-    public GameObject Hatch()
+    public void Hatch()
     {
         if (_towers.Count == 0 || _hatched || !_isReadyToHatch)
-            return null;
+            return;
         else
         {
-            GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count)]);
-            if (tower == null) return null;
+
+            FindObjectOfType<GameManager>().SpawnItemToPlace(_towers[Random.Range(0, _towers.Count)]);
+
+            //GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count)]);
+            //if (tower == null) return null;
             
-            tower.transform.parent = null;
-            _hatched = true;
+            //tower.transform.parent = null;
+            //_hatched = true;
 
             Invoke(DESTROY_METHODNAME, 0.1f);
 
-            return tower;
+            //return tower;
         }
     }
 
     public void ReadyToHatch()
     {
+        _isReadyToHatch = true;
+
         Animator animator = transform.GetComponent<Animator>();
 
         if (animator == null)
@@ -105,7 +114,18 @@ public class Egg : MonoBehaviour
         if(enemy != null)
         {
             Hit();
-            enemy.DoDamage(0.5f);
+            enemy.DoDamage(_damage);
+        }
+    }
+
+    public void TryHatch()
+    {
+        if (_isReadyToHatch || _hatched) return;
+
+        ++_wavesAlive;
+        if(Random.Range(0.0f, 1.0f) < _chance || _wavesAlive >= _wavesNeeded)
+        {
+            ReadyToHatch();
         }
     }
 }

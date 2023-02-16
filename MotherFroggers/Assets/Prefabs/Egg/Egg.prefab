@@ -95,11 +95,12 @@ MonoBehaviour:
   _deathVFXTemplate: {fileID: 851303482401682087, guid: 7a0133c93e371d8449c7304d55215e06, type: 3}
   _isReadyToHatch: 0
   _health: 1
+  _damage: 1
   _wavesNeeded: 3
   _chance: 0.33
   _placeableOn: 01000000
   _towers:
-  - {fileID: 5714931262838323714, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
+  - {fileID: 6667965525213966741, guid: ba59e810118f2ea40924d332947f608b, type: 3}
   - {fileID: 6667965525213966741, guid: ba59e810118f2ea40924d332947f608b, type: 3}
   - {fileID: 2620490874376607342, guid: bfcb7503c2c33474bb3bd5565657c4a0, type: 3}
 --- !u!95 &3268819664514971712

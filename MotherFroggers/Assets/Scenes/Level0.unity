@@ -4520,6 +4520,7 @@ MonoBehaviour:
   _epsilon: {x: 10, y: 10}
   _moveSpeed: 8
   _zoomSpeed: 1
+  _dragSpeed: 20
 --- !u!1001 &485475673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6120,8 +6121,15 @@ MonoBehaviour:
   _startButton: {fileID: 564705814}
   _buildMusic: {fileID: 8300000, guid: c948e841b5a839d44b5337e8cd782a67, type: 3}
   _waveMusic: {fileID: 8300000, guid: 80ba3262c3644f94dbb48f2b4fac72e7, type: 3}
-  _eggsToPlace: 2
-  _eggsPerWave: 2
+  _initialItemsToPlace:
+  - {fileID: 5714931262838323714, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
+  - {fileID: 6554538626499830642, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
+  - {fileID: 6554538626499830642, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
+  _itemsToPlacePerWave:
+  - {fileID: 6554538626499830642, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
+  - {fileID: 6554538626499830642, guid: 7133bba722fb9124891392a66d9ae53e, type: 3}
+  _eggs: []
+  _itemSpawnSocket: {fileID: 1118942534}
 --- !u!82 &663284628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6329,9 +6337,19 @@ MonoBehaviour:
   _waves:
   - _enemies:
     - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 2
+    _duration: 5
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 2
+    _duration: 5
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
+      _spawnAmount: 2
+    _duration: 5
+  - _enemies:
+    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       _spawnAmount: 5
-    - _enemy: {fileID: 6429546396892126978, guid: 5f1a31fe7825c26408c36bf1b97ea09d, type: 3}
-      _spawnAmount: 10
     _duration: 5.1666665
   - _enemies:
     - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
@@ -10500,6 +10518,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7881591872709311693, guid: e39a48098c4810b49b2cc6e302d93876, type: 3}
   m_PrefabInstance: {fileID: 1114831159}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1118942533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1118942534}
+  m_Layer: 0
+  m_Name: TEMP_SpawnSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1118942534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118942533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.61, y: -4.05, z: 8.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1119196212
 PrefabInstance:
   m_ObjectHideFlags: 0
