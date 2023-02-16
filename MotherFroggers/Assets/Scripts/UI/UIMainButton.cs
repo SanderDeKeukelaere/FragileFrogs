@@ -25,7 +25,14 @@ public class UIMainButton : MonoBehaviour
     {
         if (_gameManager.IsInWave == false && _gameManager.RemainingItemsToPlace > 0)
         {
-            _buttonText.text = "Confirm";
+            if (_itemManager.HasValidPlacement)
+            {
+                _buttonText.text = "Confirm";
+            }
+            else
+            {
+                _buttonText.text = "INVALID";
+            }
         }
         else if (_gameManager.IsInWave == false)
         {
