@@ -23,7 +23,7 @@ public class UIMainButton : MonoBehaviour
     }
     private void Update()
     {
-        if (_gameManager.IsInWave == false && _gameManager.EggsToPlace > 0)
+        if (_gameManager.IsInWave == false && _gameManager.RemainingItemsToPlace > 0)
         {
             _buttonText.text = "Confirm";
         }

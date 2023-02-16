@@ -6,7 +6,7 @@ public class ItemManager : MonoBehaviour
 {
     [SerializeField] private int _hatchedRange = 3;
 
-    private float _maxHitDistance = 5.0f;
+    private float _maxHitDistance = 10.0f;
 
     private GameObject _currentItem = null;
     public GameObject CurrentItem
@@ -45,8 +45,8 @@ public class ItemManager : MonoBehaviour
         if (tile.Item != null) return;
 
         //Place the current item on the tile
-        _currentItem.transform.position = tile.Socket.position;
-        _currentItem.transform.parent = tile.transform;
+        _currentItem.transform.parent = tile.Socket;
+        _currentItem.transform.localPosition = Vector3.zero;
 
         //Save which tile the item is currently on
         _currentTile = tile;
@@ -91,8 +91,10 @@ public class ItemManager : MonoBehaviour
 
     public bool ConfirmItemPlacement()
     {
-        //Only continue if the placement is valid
-        if (!_hasValidPlacement) return false;
+        //Only continue if the placement is valid and if there is a tile manager
+        TileManager tileManager = GetComponent<TileManager>();
+
+        if (_hasValidPlacement == false || tileManager == null) return false;
 
         //Set the current item as the item of the tile it's currently placed on
         _currentTile.Item = _currentItem;
@@ -101,6 +103,9 @@ public class ItemManager : MonoBehaviour
         _currentItem = null;
         _currentTile = null;
         _hasValidPlacement = false;
+
+        //Disable all clickable tiles
+        tileManager.DisableAllClickableTiles();
 
         return true;
     }
@@ -120,8 +125,8 @@ public class ItemManager : MonoBehaviour
 
         //Select the hatched item as current item
         _currentItem = hatchedItem;
-        _currentItem.transform.position = tile.Socket.position;
-        _currentItem.transform.parent = tile.transform;
+        _currentItem.transform.parent = tile.Socket;
+        _currentItem.transform.localPosition = Vector3.zero;
 
         _hasValidPlacement = true;
 
