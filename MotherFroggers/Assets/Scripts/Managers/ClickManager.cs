@@ -11,8 +11,7 @@ public class ClickManager : MonoBehaviour
     {
         set { _handleClicks = value; }
     }
-
-    private const string HANDLE_CLICK_METHOD = "HandleClick";
+    
 
     private void Update()
     {
@@ -20,7 +19,7 @@ public class ClickManager : MonoBehaviour
         if (_itemManager == null) return;
 
         if (Input.GetMouseButtonDown(0))
-            Invoke(HANDLE_CLICK_METHOD, 0.1f);
+            HandleClick();
     }
 
     private void HandleClick()

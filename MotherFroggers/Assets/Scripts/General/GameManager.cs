@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private TileManager _tileManager = null;
     private ClickManager _clickManager = null;
 
+    private bool _isFirstTower = true;
+
     private AudioSource _audioBuildSource = null;
     private AudioSource _audioWaveSource = null;
 
@@ -132,6 +134,8 @@ public class GameManager : MonoBehaviour
             }
 
             SpawnNextItemToPlace();
+
+            _clickManager.enabled = true;
         }
 
         if(_isInWave)
@@ -183,12 +187,16 @@ public class GameManager : MonoBehaviour
         }
 
         //Make tiles clickable depending on type of item to place
-        if (_itemManager.CurrentItem.GetComponent<BaseTower>())
+        if (_isFirstTower)
         {
-            List<MyEnums.TileType> itemPlaceableOn = _itemManager.CurrentItem.GetComponent<BaseTower>().PlaceableOn;
-            foreach (MyEnums.TileType tileType in itemPlaceableOn)
+            _isFirstTower = false;
+            if (_itemManager.CurrentItem.GetComponent<BaseTower>())
             {
-                _tileManager.SetClickableTilesOfType(tileType);
+                List<MyEnums.TileType> itemPlaceableOn = _itemManager.CurrentItem.GetComponent<BaseTower>().PlaceableOn;
+                foreach (MyEnums.TileType tileType in itemPlaceableOn)
+                {
+                    _tileManager.SetClickableTilesOfType(tileType);
+                }
             }
         }
         if (_itemManager.CurrentItem.GetComponent<Egg>())
