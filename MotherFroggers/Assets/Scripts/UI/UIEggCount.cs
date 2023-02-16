@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIEggCount : MonoBehaviour
 {
     GameManager _gameManager;
+    WaveManager _waveManager;
     ItemManager _itemManager;
     [SerializeField] GameObject _ui;
     [SerializeField] TextMeshProUGUI _text;
@@ -21,11 +22,20 @@ public class UIEggCount : MonoBehaviour
         {
             Debug.LogError("Unable to find itemmanager");
         }
+        _waveManager = FindAnyObjectByType<WaveManager>();
+        if (_waveManager == null)
+        {
+            Debug.LogError("Unable to find wavemanager");
+        }
     }
     private void Update()
     {
-        gameObject.SetActive(_itemManager.CurrentItem != null);
+        if (_waveManager.MaxWave == _waveManager.CurrentWave && _gameManager.IsInWave == false)
+        {
+            _ui.SetActive(false);
+            return;
+        }
         _text.text = $"{_gameManager.RemainingEggsToPlace}";
-        _ui.SetActive(!_gameManager.IsInWave);
+        _ui.SetActive(_itemManager.CurrentItem != null);
     }
 }

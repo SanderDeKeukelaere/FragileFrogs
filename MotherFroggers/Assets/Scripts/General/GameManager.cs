@@ -160,6 +160,11 @@ public class GameManager : MonoBehaviour
 
             _audioBuildSource.volume += _fadeSpeed * Time.deltaTime;
             if (_audioBuildSource.volume > 1.0f) _audioBuildSource.volume = 1.0f;
+
+            if (_waveManager.MaxWave == _waveManager.CurrentWave && IsInWave == false)
+            {
+                _startButton.SetActive(false);
+            }
         }
     }
 
