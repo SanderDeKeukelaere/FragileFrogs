@@ -5258,6 +5258,7 @@ GameObject:
   - component: {fileID: 564705817}
   - component: {fileID: 564705816}
   - component: {fileID: 564705819}
+  - component: {fileID: 564705820}
   m_Layer: 5
   m_Name: Start Wave Button
   m_TagString: Untagged
@@ -5393,6 +5394,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonText: {fileID: 986752699}
+--- !u!114 &564705820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564705814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 663284631}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 663284631}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1001 &599237546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6335,18 +6381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - _enemies:
-    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
-      _spawnAmount: 2
-    _duration: 5
-  - _enemies:
-    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
-      _spawnAmount: 2
-    _duration: 5
-  - _enemies:
-    - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
-      _spawnAmount: 2
-    _duration: 5
   - _enemies:
     - _enemy: {fileID: 5532310905717496673, guid: 72d916bb8aa45524fb7e3d6fbb9c9486, type: 3}
       _spawnAmount: 5
