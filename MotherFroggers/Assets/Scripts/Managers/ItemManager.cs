@@ -134,12 +134,16 @@ public class ItemManager : MonoBehaviour
         //Detach the egg from clicked tile
         tile.Item = null;
 
+        if (_currentItem.GetComponent<ShieldFrog>())
+        {
+            _currentTile = tile;
+            _hasValidPlacement = true;
+        }
+
         ////Select the hatched item as current item
         //_currentItem = hatchedItem;
         _currentItem.transform.parent = tile.Socket;
         _currentItem.transform.localPosition = Vector3.zero;
-
-        _hasValidPlacement = true;
 
         return true;
     }
