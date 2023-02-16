@@ -94,6 +94,9 @@ public class ItemManager : MonoBehaviour
         {
             tileManager.SetClickableTilesOfTypeInRange(tileType, pathTile.transform.position, _hatchedRange);
         }
+
+        //Activate the clickable indicators
+        _tileManager.SetClickableIndicatorState(true);
     }
 
     public bool ConfirmItemPlacement()

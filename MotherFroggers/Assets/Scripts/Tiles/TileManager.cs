@@ -234,6 +234,18 @@ public class TileManager : MonoBehaviour
             tile.GetComponent<Clickable>().IsClickable = false;
         }
     }
+
+    public void SetClickableIndicatorState(bool shouldShow)
+    {
+        foreach (BaseTile tile in _pathTiles)
+        {
+            tile.GetComponent<Clickable>().SetClickableIndicatorState(shouldShow);
+        }
+        foreach (BaseTile tile in _worldTiles)
+        {
+            tile.GetComponent<Clickable>().SetClickableIndicatorState(shouldShow);
+        }
+    }
 }
 public class Node
 {
