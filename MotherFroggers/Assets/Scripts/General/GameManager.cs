@@ -11,6 +11,19 @@ public class GameManager : MonoBehaviour
 
     private bool _isFirstTower = true;
 
+    private float _totalTime = 0f;
+    private int _score = 0;
+
+    public int Score
+    {
+        get { return _score; }
+        set { _score = value; }
+    }
+    public float TotalTime
+    {
+        get { return _totalTime; }
+    }
+
     private AudioSource _audioBuildSource = null;
     private AudioSource _audioWaveSource = null;
 
@@ -101,6 +114,9 @@ public class GameManager : MonoBehaviour
                 //Remove the confirmed item
                 _remainingItemsToPlace.RemoveAt(0);
 
+                //Deactivate the clickable indicators
+                _tileManager.SetClickableIndicatorState(false);
+
                 //Spawn the next item to place if there are items left
                 if (_remainingItemsToPlace.Count > 0)
                     SpawnNextItemToPlace();
@@ -158,6 +174,14 @@ public class GameManager : MonoBehaviour
             _audioBuildSource.volume += _fadeSpeed * Time.deltaTime;
             if (_audioBuildSource.volume > 1.0f) _audioBuildSource.volume = 1.0f;
         }
+        if (_waveManager.MaxWave == _waveManager.CurrentWave && IsInWave == false)
+        {
+            _startButton.SetActive(false);
+        }
+        else if (_motherfrogger.CurrentHp > 0)
+        {
+            _totalTime += Time.deltaTime;
+        }
     }
 
     public void SpawnItemToPlace(GameObject newPlacementObject)
@@ -193,6 +217,9 @@ public class GameManager : MonoBehaviour
                 {
                     _tileManager.SetClickableTilesOfType(tileType);
                 }
+
+                //Activate the clickable indicators
+                _tileManager.SetClickableIndicatorState(true);
             }
         }
         if (_itemManager.CurrentItem.GetComponent<Egg>())
@@ -202,6 +229,9 @@ public class GameManager : MonoBehaviour
             {
                 _tileManager.SetClickableTilesOfType(tileType);
             }
+
+            //Activate the clickable indicators
+            _tileManager.SetClickableIndicatorState(true);
         }
     }
 }

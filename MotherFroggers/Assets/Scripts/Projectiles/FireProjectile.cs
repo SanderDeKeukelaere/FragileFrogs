@@ -10,7 +10,7 @@ public class FireProjectile : BaseProjectile
 
     [SerializeField] private float _damagePerSecond = 1f;
 
-    [SerializeField] private float _duration = 1.0f;
+    [SerializeField] private float _duration = 3.0f;
 
     private bool _isInit = false;
     private void Awake()
@@ -28,7 +28,7 @@ public class FireProjectile : BaseProjectile
             Destroy(_instance.gameObject);
         }
         _instance = this;
-        Invoke("KillAfterTime", 5.0f);
+        Invoke("KillAfterTime", _duration);
     }
     private void Update()
     {

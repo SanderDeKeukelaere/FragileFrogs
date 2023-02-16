@@ -21,6 +21,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] Slider _healthSlider = null;
     private float _healthBarTimer = 0f;
     private float _healthBarMaxTime = 2f;
+    private GameManager _gameManager;
 
     public float Damage
     {
@@ -43,6 +44,8 @@ public class BasicEnemy : MonoBehaviour
             _healthBarTimer = _healthBarMaxTime;
         }
 
+        _gameManager.Score += (int)(damage * 10);
+
         if (_health <= 0f)
         {
             Destroy(gameObject);
@@ -54,6 +57,7 @@ public class BasicEnemy : MonoBehaviour
     private void Awake()
     {
         GetPath();
+        _gameManager = FindObjectOfType<GameManager>();
     }
     private void Start()
     {

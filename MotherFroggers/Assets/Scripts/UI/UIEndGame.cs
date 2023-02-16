@@ -7,6 +7,8 @@ public class UIEndGame : MonoBehaviour
 {
     [SerializeField] GameObject _ui;
     [SerializeField] TextMeshProUGUI _title;
+    [SerializeField] TextMeshProUGUI _time;
+    [SerializeField] TextMeshProUGUI _score;
 
     Motherfrogger _motherfrogger;
     WaveManager _waveManager;
@@ -42,5 +44,11 @@ public class UIEndGame : MonoBehaviour
             _ui.SetActive(true);
             _title.text = "GAME COMPLETED";
         }
+        UpdateStats();
+    }
+    private void UpdateStats()
+    {
+        _time.text = (int)_gameManager.TotalTime + "";
+        _score.text = (int)_gameManager.Score + "";
     }
 }

@@ -202,6 +202,9 @@ public class TileManager : MonoBehaviour
                         PathTile tile = collider.GetComponent<PathTile>();
                         if (tile == null) continue;
 
+                        //Check there is no item on the tile already
+                        if (tile.Item != null) continue;
+
                         tile.GetComponent<Clickable>().IsClickable = true;
 
                         break;
@@ -211,6 +214,9 @@ public class TileManager : MonoBehaviour
                     {
                         WorldTile tile = collider.GetComponent<WorldTile>();
                         if (tile == null) continue;
+
+                        //Check there is no item on the tile already
+                        if (tile.Item != null) continue;
 
                         tile.GetComponent<Clickable>().IsClickable = true;
 
@@ -232,6 +238,18 @@ public class TileManager : MonoBehaviour
         foreach (BaseTile tile in _worldTiles)
         {
             tile.GetComponent<Clickable>().IsClickable = false;
+        }
+    }
+
+    public void SetClickableIndicatorState(bool shouldShow)
+    {
+        foreach (BaseTile tile in _pathTiles)
+        {
+            tile.GetComponent<Clickable>().SetClickableIndicatorState(shouldShow);
+        }
+        foreach (BaseTile tile in _worldTiles)
+        {
+            tile.GetComponent<Clickable>().SetClickableIndicatorState(shouldShow);
         }
     }
 }
