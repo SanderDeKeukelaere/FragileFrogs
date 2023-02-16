@@ -6,6 +6,8 @@ public class ItemManager : MonoBehaviour
 {
     [SerializeField] private int _hatchedRange = 3;
 
+    [SerializeField] private AudioSource _placeTowerSFX = null;
+
     private float _maxHitDistance = 40.0f;
 
     private GameObject _currentItem = null;
@@ -110,6 +112,11 @@ public class ItemManager : MonoBehaviour
 
         //Set the current item as the item of the tile it's currently placed on
         _currentTile.Item = _currentItem;
+
+        if(_currentItem.GetComponent<BaseTower>() && _placeTowerSFX)
+        {
+            _placeTowerSFX.Play();
+        }
 
         //Reset variables
         _currentItem = null;
