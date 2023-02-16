@@ -49,10 +49,17 @@ public class Spawner : MonoBehaviour
             --_currentAmountLeft;
             if (_currentAmountLeft <= 0)
             {
-                _isSpawning = false;
+                Invoke(DISABLE_SPAWNING, 0.1f);
             }
         }
     }
+
+    const string DISABLE_SPAWNING = "DisableSpawning";
+    void DisableSpawning()
+    {
+        _isSpawning = false;
+    }
+
     private void HandleSpawn()
     {
         int id = Random.Range(0, _enemies.Count);
