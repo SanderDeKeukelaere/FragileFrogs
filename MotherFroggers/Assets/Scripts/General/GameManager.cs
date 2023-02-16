@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private WaveManager _waveManager = null;
     private ItemManager _itemManager = null;
+    private TileManager _tileManager = null;
+    private ClickManager _clickManager = null;
 
     private AudioSource _audioBuildSource = null;
     private AudioSource _audioWaveSource = null;
@@ -17,17 +19,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip _buildMusic = null;
     [SerializeField] private AudioClip _waveMusic = null;
 
-    [SerializeField] private int _eggsToPlace = 2;
-    public int EggsToPlace
+    [SerializeField] private List<GameObject> _initialItemsToPlace = new List<GameObject>();
+    [SerializeField] private List<GameObject> _itemsToPlacePerWave = new List<GameObject>();
+
+    private List<GameObject> _remainingItemsToPlace = new List<GameObject>();
+    public int RemainingItemsToPlace
     {
-        get { return _eggsToPlace; }
+        get { return _remainingItemsToPlace.Count; }
     }
 
-    [SerializeField] private int _eggsPerWave = 2;
-    public int EggsPerWave
-    {
-        get { return _eggsPerWave; }
-    }
+    [SerializeField] private Transform _itemSpawnSocket = null;
 
     bool _isInWave = true;
     public bool IsInWave { get { return _isInWave; } }
@@ -39,6 +40,9 @@ public class GameManager : MonoBehaviour
         _motherfrogger = FindAnyObjectByType<Motherfrogger>();
         _waveManager = GetComponent<WaveManager>();
         _itemManager = GetComponent<ItemManager>();
+        _tileManager = GetComponent<TileManager>();
+        _clickManager = GetComponent<ClickManager>();
+
         var audioSources = GetComponents<AudioSource>();
         _audioBuildSource = audioSources[0];
         _audioWaveSource = audioSources[1];
@@ -51,12 +55,21 @@ public class GameManager : MonoBehaviour
         _audioBuildSource.Play();
 
         _isInWave = false;
+
+        //Initialize item to place and spawn the first one
+        _remainingItemsToPlace = _initialItemsToPlace;
+
+        SpawnNextItemToPlace();
     }
 
     public void NextWave()
     {
-        //Start wave if all eggs are placed
-        if (_isInWave == false && _eggsToPlace == 0)
+        //Temporarely disable clicks in the click manager
+        if (_clickManager != null)
+            _clickManager.HandleClicks = false;
+
+        //Start wave if all items are placed
+        if (_isInWave == false && _remainingItemsToPlace.Count == 0 && _itemManager.CurrentItem == null)
         {
             _waveManager.StartWave();
 
@@ -70,20 +83,15 @@ public class GameManager : MonoBehaviour
         //Check if valid placement tile is selected
         if (_itemManager.CurrentItem != null && _isInWave == false)
         {
-            //Check if tower placement
-            if (_itemManager.CurrentItem.GetComponent<BaseTower>())
+            //Try to confirm the location of the current item
+            if (_itemManager.ConfirmItemPlacement())
             {
+                //Remove the confirmed item
+                _remainingItemsToPlace.RemoveAt(0);
 
-            }
-            //Check if eggs need to be placed
-            if (_itemManager.CurrentItem.GetComponent<Egg>())
-            {
-                if (_eggsToPlace > 0)
-                {
-
-                }
-                Debug.LogError("Handle placement");
-                _eggsToPlace--;
+                //Spawn the next item to place if there are items left
+                if (_remainingItemsToPlace.Count > 0)
+                    SpawnNextItemToPlace();
             }
         }
     }
@@ -98,7 +106,7 @@ public class GameManager : MonoBehaviour
 
             _isInWave = false;
 
-            _eggsToPlace = _eggsPerWave;
+            _remainingItemsToPlace = _itemsToPlacePerWave;
         }
 
         if(_isInWave)
@@ -124,6 +132,36 @@ public class GameManager : MonoBehaviour
 
             _audioBuildSource.volume += _fadeSpeed * Time.deltaTime;
             if (_audioBuildSource.volume > 1.0f) _audioBuildSource.volume = 1.0f;
+        }
+    }
+
+    private void SpawnNextItemToPlace()
+    {
+        //Only continue if there are items left to place and if there is an item & tile manager
+        if (_remainingItemsToPlace.Count == 0 || _itemManager == null || _tileManager == null) return;
+
+        //Spawn the next item
+        GameObject spawnedItem = Instantiate(_remainingItemsToPlace[0], _itemSpawnSocket.position, _itemSpawnSocket.rotation);
+
+        //Set the spawned item as current item of the item manager
+        _itemManager.CurrentItem = spawnedItem;
+
+        //Make tiles clickable depending on type of item to place
+        if (_itemManager.CurrentItem.GetComponent<BaseTower>())
+        {
+            List<MyEnums.TileType> itemPlaceableOn = _itemManager.CurrentItem.GetComponent<BaseTower>().PlaceableOn;
+            foreach (MyEnums.TileType tileType in itemPlaceableOn)
+            {
+                _tileManager.SetClickableTilesOfType(tileType);
+            }
+        }
+        if (_itemManager.CurrentItem.GetComponent<Egg>())
+        {
+            List<MyEnums.TileType> itemPlaceableOn = _itemManager.CurrentItem.GetComponent<Egg>().PlaceableOn;
+            foreach (MyEnums.TileType tileType in itemPlaceableOn)
+            {
+                _tileManager.SetClickableTilesOfType(tileType);
+            }
         }
     }
 }
