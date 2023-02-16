@@ -122,12 +122,16 @@ public class GameManager : MonoBehaviour
 
             _remainingItemsToPlace = new List<GameObject>(_itemsToPlacePerWave);
 
-            SpawnNextItemToPlace();
 
-            foreach(Egg egg in _eggs)
+            for(int i = _eggs.Count - 1; i >= 0; i--)
             {
-                egg.TryHatch();
+                if (_eggs[i] == null || _eggs[i].TryHatch())
+                {
+                    _eggs.RemoveAt(i);
+                }
             }
+
+            SpawnNextItemToPlace();
         }
 
         if(_isInWave)

@@ -6,7 +6,7 @@ public class ItemManager : MonoBehaviour
 {
     [SerializeField] private int _hatchedRange = 3;
 
-    private float _maxHitDistance = 10.0f;
+    private float _maxHitDistance = 40.0f;
 
     private GameObject _currentItem = null;
     public GameObject CurrentItem

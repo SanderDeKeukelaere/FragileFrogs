@@ -51,8 +51,8 @@ public class Egg : MonoBehaviour
 
     private void Start()
     {
-        if (_isReadyToHatch)
-            ReadyToHatch();
+        //if (_isReadyToHatch)
+        //    ReadyToHatch();
     }
 
     public void Hatch()
@@ -118,14 +118,17 @@ public class Egg : MonoBehaviour
         }
     }
 
-    public void TryHatch()
+    public bool TryHatch()
     {
-        if (_isReadyToHatch || _hatched) return;
+        if (_isReadyToHatch || _hatched) return false;
 
         ++_wavesAlive;
         if(Random.Range(0.0f, 1.0f) < _chance || _wavesAlive >= _wavesNeeded)
         {
             ReadyToHatch();
+            return true;
         }
+
+        return false;
     }
 }
