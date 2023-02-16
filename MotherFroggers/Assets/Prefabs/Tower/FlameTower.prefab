@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: _projectilePrefab
       value: 
       objectReference: {fileID: 7851914003757240457, guid: ba35c37f01e1d2d429fc7c1ddec3fc3b, type: 3}
+    - target: {fileID: 2146244982384294555, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a418a6d7b1a21b46ab90f1be6f3ed89, type: 2}
     - target: {fileID: 5714931262838323714, guid: 2911b6590969d674cbc5a1d9d7ee8b6a, type: 3}
       propertyPath: m_Name
       value: FlameTower
