@@ -131,19 +131,13 @@ public class ItemManager : MonoBehaviour
         //GameObject hatchedItem = egg.Hatch();
         //if (hatchedItem == null) return false;
 
-        ////Detach the egg from clicked tile
-        //tile.Item = null;
+        //Detach the egg from clicked tile
+        tile.Item = null;
 
         ////Select the hatched item as current item
         //_currentItem = hatchedItem;
-        //_currentItem.transform.parent = tile.Socket;
-        //_currentItem.transform.localPosition = Vector3.zero;
-
-        //List<MyEnums.TileType> itemPlaceableOn = _currentItem.GetComponent<BaseTower>().PlaceableOn;
-        //foreach (MyEnums.TileType tileType in itemPlaceableOn)
-        //{
-        //    _tileManager.SetClickableTilesOfType(tileType);
-        //}
+        _currentItem.transform.parent = tile.Socket;
+        _currentItem.transform.localPosition = Vector3.zero;
 
         _hasValidPlacement = true;
 

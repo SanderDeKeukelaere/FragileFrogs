@@ -66,9 +66,9 @@ public class Egg : MonoBehaviour
 
             //GameObject tower = Instantiate(_towers[Random.Range(0, _towers.Count)]);
             //if (tower == null) return null;
-            
+
             //tower.transform.parent = null;
-            //_hatched = true;
+            _hatched = true;
 
             Invoke(DESTROY_METHODNAME, 0.1f);
 
