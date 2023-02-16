@@ -7,7 +7,6 @@ public class BaseTower : MonoBehaviour
 {
     [SerializeField] private Transform _debugTarget = null;
     [SerializeField] private float _fireDelay = 1f; //Amount of seconds between firing
-    [SerializeField] private float _damage = 1f;    
     [SerializeField] private float _range = 1f;
     private List<GameObject> _enemies = new List<GameObject>();
     private float _attackTimer = 0f;
