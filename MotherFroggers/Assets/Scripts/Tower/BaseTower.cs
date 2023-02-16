@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BaseTower : MonoBehaviour
 {
+    private ItemManager _itemManager;
+
     [SerializeField] private Transform _debugTarget = null;
     [SerializeField] private float _fireDelay = 1f; //Amount of seconds between firing
     [SerializeField] private float _range = 1f;
@@ -13,6 +15,7 @@ public class BaseTower : MonoBehaviour
     [SerializeField] private GameObject _projectilePrefab = null;
     [SerializeField] private Transform _projectileSocket = null;
     [SerializeField] private Transform _frog = null;
+    [SerializeField] private GameObject _rangeObj = null;
 
     [SerializeField] protected List<MyEnums.TileType> _placeableOn = new List<MyEnums.TileType>();
     public List<MyEnums.TileType> PlaceableOn
@@ -25,6 +28,7 @@ public class BaseTower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _itemManager = FindObjectOfType<ItemManager>();
         var capsule = GetComponentInChildren<CapsuleCollider>();
         capsule.radius = _range;
         capsule.height = 5 * capsule.radius;
@@ -46,6 +50,10 @@ public class BaseTower : MonoBehaviour
         if (_attackTimer > 0f)
         {
             _attackTimer -= Time.deltaTime;
+        }
+        if (_itemManager.CurrentItem == null || _itemManager.CurrentItem.GetInstanceID() != gameObject.GetInstanceID())
+        {
+            _rangeObj.SetActive(false);
         }
     }
 
