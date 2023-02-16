@@ -80,10 +80,6 @@ public class GameManager : MonoBehaviour
 
     public void NextWave()
     {
-        //Temporarely disable clicks in the click manager
-        if (_clickManager != null)
-            _clickManager.HandleClicks = false;
-
         //Start wave if all items are placed
         if (_isInWave == false && _remainingItemsToPlace.Count == 0 && _itemManager.CurrentItem == null)
         {
