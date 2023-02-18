@@ -131,7 +131,7 @@ public class BasicEnemy : MonoBehaviour
                 Debug.LogError("Yoink hp @ end");
                 return;
             }
-            Vector3 p = Vector3.MoveTowards(transform.position, _checkpoints[0], _speed);
+            Vector3 p = Vector3.MoveTowards(transform.position, _checkpoints[0], _speed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_checkpoints[0] - transform.position), Time.deltaTime * _rotateSpeed);
             GetComponent<Rigidbody>().MovePosition(p);
         }
