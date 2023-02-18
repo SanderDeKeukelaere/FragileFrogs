@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using static UnityEngine.UI.Image;
@@ -16,16 +17,22 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private float _moveSpeed = 8.0f;
     [SerializeField] private float _zoomSpeed = 1.0f;
-    [SerializeField] private float _dragSpeed = 20.0f;
+    [SerializeField] private float _dragSpeed = 10.0f;
+    [SerializeField] private float _minDragDuration = 0.1f;
 
     private Vector3 _dragOrigin;
     private Vector3 _resetCamera;
+    private float _dragDuration = 0f;
 
     private bool _isDragging;
 
     private void Start()
     {
         _resetCamera = Camera.main.transform.position;
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            _dragSpeed *= 0.75f;
+        }
     }
 
     private void Update()
@@ -34,52 +41,49 @@ public class CameraMovement : MonoBehaviour
         
         Vector3 velocity = new Vector3();
 
-        //if (mousePos.x < _epsilon.x) velocity.x = _moveSpeed;
-        //else if (mousePos.x > Screen.width - _epsilon.x) velocity.x = -_moveSpeed;
-        //
-        //if (mousePos.y < _epsilon.y) velocity.z = _moveSpeed;
-        //else if(mousePos.y > Screen.height - _epsilon.y) velocity.z = -_moveSpeed;
-        //
-        //transform.position += velocity * Time.deltaTime;
-        //
-        //Vector3 clampedPos = transform.position;
-        //if(clampedPos.x < _min.x)
-        //{
-        //    clampedPos.x = _min.x;
-        //}
-        //else if(clampedPos.x > _max.x)
-        //{
-        //    clampedPos.x = _max.x;
-        //}
-        //if (clampedPos.z < _min.y)
-        //{
-        //    clampedPos.z = _min.y;
-        //}
-        //else if (clampedPos.z > _max.y)
-        //{
-        //    clampedPos.z = _max.y;
-        //}
-        //transform.position = clampedPos;
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        //if (true)
         {
-            transform.position = _resetCamera;
-            _zoom = 0;
+            if (Input.GetMouseButtonDown(0))
+            {
+                _dragOrigin = mousePos;
+                _isDragging = true;
+                _dragDuration = 0f;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                _dragDuration += Time.deltaTime;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isDragging = false;
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                _dragOrigin = mousePos;
+                _isDragging = true;
+                _dragDuration = _minDragDuration;
+            }
             
-        }
+            if (Input.GetMouseButtonUp(1))
+            {
+                _isDragging = false;
+            }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            _dragOrigin = mousePos;
-            _isDragging = true;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                transform.position = _resetCamera;
+                _zoom = 0;
+            }
         }
-        
-        if(Input.GetMouseButtonUp(1))
-        {
-            _isDragging = false;
-        }
-        
-        if(_isDragging)
+       
+
+        if (_isDragging && _dragDuration >= _minDragDuration)
         {
             Vector3 difference = Camera.main.ScreenToViewportPoint(new Vector3(mousePos.x, mousePos.y) - _dragOrigin);
 
@@ -93,7 +97,6 @@ public class CameraMovement : MonoBehaviour
 
             velocity = difference * _dragSpeed;
         }
-
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -131,12 +134,12 @@ public class CameraMovement : MonoBehaviour
         {
             clampedPos.z = _max.y;
         }
-        
+
         transform.position = clampedPos;
-        
+
         _zoom += Input.mouseScrollDelta.y * _zoomSpeed;
-        
-        if(_zoom < _zoomBounds.x)
+
+        if (_zoom < _zoomBounds.x)
         {
             _zoom = _zoomBounds.x;
         }
